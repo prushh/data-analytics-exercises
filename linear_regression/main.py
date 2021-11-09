@@ -80,7 +80,8 @@ df_x = pd.concat([df_x, df_wd], axis=1)
 
 x_train, x_test, y_train, y_test = df_split(df_x, df_y)
 # TODO: solve ConvergenceWarning
-clf = LogisticRegression(random_state=20, max_iter=150)
+# clf = LogisticRegression(random_state=20, multi_class='multinomial', max_iter=500)
+clf = LogisticRegression(random_state=20, multi_class='multinomial', verbose=1, max_iter=1500)
 clf.fit(x_train, y_train)
 predictions = clf.predict(x_test)
 print('Avg accuracy: ', clf.score(x_test, y_test))

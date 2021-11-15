@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 
@@ -22,6 +23,12 @@ def one_hot_encoding(values: np.ndarray) -> np.ndarray:
     print(f'one_hot_encoded: {one_hot_encoded}')
 
     return one_hot_encoded
+
+
+def one_hot_dummies(values: np.ndarray) -> pd.DataFrame:
+    df_encoded = pd.get_dummies(values)
+    print(df_encoded)
+    return df_encoded
 
 
 def reverse_one_hot(values: np.ndarray, one_hot_element: int) -> np.ndarray:
@@ -50,6 +57,8 @@ def main():
     one_hot_encoded32 = convert_to32(one_hot_encoded64)
     one_hot_element = one_hot_encoded32[1, :]
     _ = reverse_one_hot(values, one_hot_element)
+
+    _ = one_hot_dummies(values)
 
 
 if __name__ == '__main__':
